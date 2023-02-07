@@ -381,6 +381,7 @@ class _StreamMessageListViewState extends State<StreamMessageListView> {
           setState(() => unreadCount = 0);
 
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            print('_scrollController?.jumpTo!!');
             _scrollController?.jumpTo(
               index: 0,
             );

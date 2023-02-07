@@ -166,6 +166,7 @@ class _PositionedListState extends State<PositionedList> {
   @override
   void didUpdateWidget(PositionedList oldWidget) {
     super.didUpdateWidget(oldWidget);
+    print('PositionedList: didUpdateWidget');
     _schedulePositionNotificationUpdate();
   }
 
@@ -320,6 +321,8 @@ class _PositionedListState extends State<PositionedList> {
     if (!updateScheduled) {
       updateScheduled = true;
       SchedulerBinding.instance.addPostFrameCallback((_) {
+        print('PositionedList: _schedulePositionNotificationUpdate -> start');
+
         if (registeredElements.value == null) {
           updateScheduled = false;
           return;
@@ -368,6 +371,8 @@ class _PositionedListState extends State<PositionedList> {
         }
         widget.itemPositionsNotifier?.itemPositions.value = positions;
         updateScheduled = false;
+
+        print('PositionedList: _schedulePositionNotificationUpdate -> end');
       });
     }
   }
